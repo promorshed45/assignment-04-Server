@@ -9,8 +9,15 @@ const createdProduct = async (payload: TProduct) => {
   }
 
 
+// Update Product Information
+const updateProduct = async (id: string, updateProduct: TProduct) => {
+  const result = await ProductModel.findByIdAndUpdate({ _id: id }, updateProduct, {new: true});
+  return result;
+}
+
 
   export const ProductService = {
     createdProduct,
+    updateProduct
     
   }

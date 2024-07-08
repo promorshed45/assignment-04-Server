@@ -7,7 +7,10 @@ router.post(
     "/",
     ProductController.createNewProduct
 );
-
+router.put(
+    "/:id",
+    ProductController.updateProduct
+);
 
 export const ProductRoute = router;
 

@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import cors from 'cors';
+import router from "./app/routes";
 
 const app = express();
 
@@ -7,10 +8,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
+// application routes
+app.use('/api', router)
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello Next!");
+  res.send("Hello Next!, Assignment-4");
 });
 
 // api not found message

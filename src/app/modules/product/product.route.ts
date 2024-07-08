@@ -7,6 +7,10 @@ router.post(
     "/",
     ProductController.createNewProduct
 );
+router.get(
+    "/",
+    ProductController.getAllProduct
+);
 router.put(
     "/:id",
     ProductController.updateProduct

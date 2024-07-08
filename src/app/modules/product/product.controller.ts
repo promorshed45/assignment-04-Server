@@ -24,6 +24,28 @@ const createNewProduct = async (req: Request, res: Response) => {
     }
 }
 
+
+// Retrieve a List of All Products
+const getAllProduct = async (req: Request, res: Response) => {
+    try {
+        const result = await ProductService.getAllProduct();
+
+        // send respone
+        res.status(200).json({
+            success: true,
+            message: "Products fetched successfully!",
+            data: result,
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Products fetched failed',
+            error: err
+        });
+    }
+}
+
+
 // Update Product Information
 const updateProduct = async (req: Request, res: Response) => {
     try {
@@ -76,5 +98,6 @@ const deleteProduct = async (req: Request, res: Response) => {
 export const ProductController = {
     createNewProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    getAllProduct
 }

@@ -8,6 +8,12 @@ const createdProduct = async (payload: TProduct) => {
     return result;
   }
 
+// Retrieve a List of All Products
+const getAllProduct = async () => {
+  const products = await ProductModel.find();
+  return products;
+};
+
 
 // Update Product Information
 const updateProduct = async (id: string, updateProduct: TProduct) => {
@@ -25,6 +31,7 @@ const deletedProduct = async (id: string) => {
   export const ProductService = {
     createdProduct,
     updateProduct,
-    deletedProduct
+    deletedProduct,
+    getAllProduct
     
   }

@@ -16,8 +16,15 @@ const updateProduct = async (id: string, updateProduct: TProduct) => {
 }
 
 
+// Delete a Product
+const deletedProduct = async (id: string) => {
+  const result = await ProductModel.deleteOne({ _id: id });
+  return result;
+}
+
   export const ProductService = {
     createdProduct,
-    updateProduct
+    updateProduct,
+    deletedProduct
     
   }

@@ -6,5 +6,5 @@ export type TProduct= {
     description: string,
     images: string,
     category: string,
-    stock: string,
+    stock: number,
 } 

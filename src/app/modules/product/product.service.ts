@@ -15,6 +15,13 @@ const getAllProduct = async () => {
 };
 
 
+// Retrieve a List of Single Products
+const getSingleProduct = async (id: string) => {
+  const products = await ProductModel.findById({_id: id});
+  return products;
+};
+
+
 // Update Product Information
 const updateProduct = async (id: string, updateProduct: TProduct) => {
   const result = await ProductModel.findByIdAndUpdate({ _id: id }, updateProduct, {new: true});
@@ -28,10 +35,19 @@ const deletedProduct = async (id: string) => {
   return result;
 }
 
+// search a Product
+const searchProduct = async (query: string) => {
+  
+  const result = await ProductModel.find({ name: { $regex: query, $options: 'i' } });
+  return result;
+}
+
   export const ProductService = {
     createdProduct,
     updateProduct,
     deletedProduct,
-    getAllProduct
+    getAllProduct,
+    getSingleProduct,
+    searchProduct
     
   }

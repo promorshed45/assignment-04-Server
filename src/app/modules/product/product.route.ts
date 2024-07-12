@@ -11,6 +11,10 @@ router.get(
     "/",
     ProductController.getAllProduct
 );
+router.get(
+    "/:id",
+    ProductController.getSingleProduct
+);
 router.put(
     "/:id",
     ProductController.updateProduct

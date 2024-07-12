@@ -46,6 +46,29 @@ const getAllProduct = async (req: Request, res: Response) => {
 }
 
 
+// Retrieve a List of Single Product
+const getSingleProduct = async (req: Request, res: Response) => {
+    try {
+
+        const {id} = req.params;
+        const result = await ProductService.getSingleProduct(id);
+
+        // send respone
+        res.status(200).json({
+            success: true,
+            message: "Products fetched successfully!",
+            data: result,
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Products fetched failed',
+            error: err
+        });
+    }
+}
+
+
 // Update Product Information
 const updateProduct = async (req: Request, res: Response) => {
     try {
@@ -95,9 +118,37 @@ const deleteProduct = async (req: Request, res: Response) => {
     }
 }
 
+
+// search a Product
+const searchProduct = async (req: Request, res: Response) => {
+    try {
+        const { query } = req.query;
+        const deleteProduct = await ProductService.searchProduct(query as string);
+        // send respone
+        if (deleteProduct) {
+            res.status(200).json({
+                success: true,
+                message: "Product deleted successfully!",
+                data: deleteProduct,
+            });
+        } else {
+            res.status(404).json({ message: 'Product deleted failed' });
+        }
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Products deleted failed',
+            error: err
+        });
+    }
+}
+
+
 export const ProductController = {
     createNewProduct,
     updateProduct,
     deleteProduct,
-    getAllProduct
+    getAllProduct,
+    getSingleProduct,
+    searchProduct
 }

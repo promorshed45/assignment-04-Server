@@ -12,11 +12,15 @@ router.get(
     ProductController.getAllProduct
 );
 router.get(
+    "/",
+    ProductController.searchProduct
+);
+router.get(
     "/:id",
     ProductController.getSingleProduct
 );
 router.put(
-    "/:id",
+    "/update/:id",
     ProductController.updateProduct
 );
 router.delete(

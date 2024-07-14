@@ -13,7 +13,7 @@ app.use(cors({origin: ['http://localhost:5173'], credentials: true}));
 app.use('/api', router)
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello Next!, Assignment-4");
+  res.send("Hello Developer!, Assignment-4");
 });
 
 // api not found message
